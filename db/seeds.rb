@@ -7,12 +7,12 @@ require 'random_data'
     description:  RandomData.random_paragraph
   )
 end
-topics = Topic.all
+@topics = Topic.all
 
 def posttest(num,title,body)
   num.times do
     Post.create!(
-      topic:  topics.sample,
+      topic:  @topics.sample,
       title:  title,
       body:   body
     )
