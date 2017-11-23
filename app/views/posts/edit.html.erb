@@ -10,6 +10,11 @@
     </ul>
   </div>
   <div class="col-md-8">
+
+
+    <!-- 11/22/18 code refactor. this block is refactored into the one line
+    below headed by the dated comment.
+
     <%= form_for [@post.topic, @post] do |f| %>
       <div class="form-group">
         <%= f.label :title %>
@@ -22,6 +27,8 @@
       <div class="form-group">
         <%= f.submit "Save", class: 'btn btn-success' %>
       </div>
-    <% end %>
+    <% end %> -->
+    <!-- 11/22/18 code refactor. -->
+    <%= render partial: 'form', locals: { topic: @post.topic, post: @post } %>
   </div>
 </div>
