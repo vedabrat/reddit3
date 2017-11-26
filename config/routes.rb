@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'welcome#faq'
+  root 'welcome#index'
 
   resources :topics do
     resources :posts, except: [:index]
