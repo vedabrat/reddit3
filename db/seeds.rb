@@ -1,5 +1,16 @@
 require 'random_data'
 
+#Create users
+5.times do
+  User.create!(
+  name: RandomData.random_name,
+  email: RandomData.random_email,
+  password: RandomData.random_sentence
+  )
+end
+@users = User.all
+
+
 # Create Topics
 15.times do
   Topic.create!(
@@ -12,6 +23,7 @@ end
 def posttest(num,title,body)
   num.times do
     Post.create!(
+      user: @users.sample,
       topic:  @topics.sample,
       title:  title,
       body:   body
@@ -47,8 +59,14 @@ commenttest(2,"simple replacement teaches something at least.")
   )
 end
 
+user = User.first
+user.update_attributes!(
+    email: "vedabrat@gmail.com",
+    password: "helloworld"
+)
 puts "Seed finished"
 puts "#{Topic.count} topics created"
+puts "#{User.count} users created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 
