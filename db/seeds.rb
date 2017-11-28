@@ -52,6 +52,7 @@ posttest(1,"this wasnt that hard","really, how much did you want to test me?")
 def commenttest(boop,boody)
   boop.times do
     Comment.create!(
+      user: @users.sample,
       post: Post.all.sample,
       body: boody
     )
