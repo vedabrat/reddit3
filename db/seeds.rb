@@ -35,19 +35,38 @@ end
 end
 @topics = Topic.all
 
-def posttest(num,title,body)
-  num.times do
-    Post.create!(
-      user: @users.sample,
-      topic:  @topics.sample,
-      title:  title,
-      body:   body
-    )
-  end
+50.times do
+  Post.create!(
+    user: @users.sample,
+    topic:  @topics.sample,
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph
+  )
 end
 
-posttest(50,RandomData.random_sentence,RandomData.random_paragraph)
-posttest(1,"this wasnt that hard","really, how much did you want to test me?")
+1.times do
+  @post = Post.create!(
+    user: @users.sample,
+    topic:  @topics.sample,
+    title:  "this wasnt that hard",
+    body:   "really, how much did you want to test me?"
+  )
+end
+# def posttest(num,title,body)
+#   num.times do
+#     Post.create!(
+#       user: @users.sample,
+#       topic:  @topics.sample,
+#       title:  title,
+#       body:   body
+#     )
+#   end
+# end
+
+# posttest(50,RandomData.random_sentence,RandomData.random_paragraph)
+# posttest(1,"this wasnt that hard","really, how much did you want to test me?")
+@post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+rand(1..5).times { @post.votes.create!(value: [-1, 1].sample, user: @users.sample) }
 
 def commenttest(boop,boody)
   boop.times do
@@ -70,6 +89,7 @@ commenttest(2,"simple replacement teaches something at least.")
 # existed previously
 2.times do
   Comment.find_or_create_by!(
+    user: @users.sample,
     post: Post.all.sample,
     body: "simple replacement teaches something at least."
   )
@@ -85,6 +105,7 @@ puts "#{Topic.count} topics created"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Vote.count} votes created"
 
 # a seeds file essentially prepopulates data into your app so that the variables
 # can execute efficiently as if they were information the users would put in .
