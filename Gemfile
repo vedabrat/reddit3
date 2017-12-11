@@ -22,8 +22,8 @@ source 'https://rubygems.org'
    gem 'shoulda'
 
  end
-
  gem "puma"
+ gem 'figaro', '1.0'
  # Use SCSS for stylesheets
  gem 'sass-rails', '~> 5.0'
  # Use Uglifier as compressor for JavaScript assets
