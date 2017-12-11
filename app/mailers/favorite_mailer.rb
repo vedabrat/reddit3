@@ -10,7 +10,7 @@ class FavoriteMailer < ApplicationMailer
     @post = post
     @comment = comment
 
-    mail(to: user.email, subject: "New comment on #{post.title}", cc: jesse.pledger@bloc.io)
+    mail(to: user.email, subject: "New comment on #{post.title}", cc: "jesse.pledger@bloc.io")
   end
 
 end
