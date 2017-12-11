@@ -22,6 +22,8 @@ source 'https://rubygems.org'
    gem 'shoulda'
 
  end
+
+ gem 'factory_bot_rails'
  gem "puma"
  gem 'figaro', '1.0'
  # Use SCSS for stylesheets
