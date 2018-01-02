@@ -5,14 +5,12 @@ source 'https://rubygems.org'
  gem 'bootstrap-sass'
 
 
- # #1
  group :production do
    gem 'pg'
    gem 'rails_12factor'
 
  end
 
- # #2
  group :development do
    gem 'sqlite3'
  end
